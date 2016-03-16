@@ -18,3 +18,14 @@ $ grep -o -E '[0-9]+(\.[0-9]+){3}' sample-access.log
 $ egrep -o '[0-9]+(\.[0-9]+){3}' sample-access.log
 
 ```
+
+## 特定の条件に該当する件数を数える
+わざわざwc -l しなくてもいいのtips
+
+-c, --count
+```
+# これが
+$ grep 'keyword' journal.log | wc -l
+# これで済みます
+$ grep 'keyword' journal.log
+```
