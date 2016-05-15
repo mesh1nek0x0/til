@@ -1,5 +1,5 @@
 # 日付の表示や設定を行うdate tips
-作業のログ保存で結構使うことが多いdateコマンド
+作業ログの保存で結構使うことが多いdateコマンド
 
 ## +によるフォーマット指定
 ```
@@ -15,7 +15,7 @@ local-mesh1neko:bash iida-ryota$ echo 'hogeeeee' > `date +%Y%m%d`/`date +%Y%m%d.
 local-mesh1neko:bash iida-ryota$ cat `date +%Y%m%d`/`date +%Y%m%d.log`
 hogeeeee
 # ちゃんと指定してもOK
-local-mesh1neko:bash iida-ryota$ cat 20160515/20160515.log 
+local-mesh1neko:bash iida-ryota$ cat 20160515/20160515.log
 hogeeeee
 
 ```
