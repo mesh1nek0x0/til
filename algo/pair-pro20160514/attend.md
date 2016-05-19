@@ -48,4 +48,4 @@ http://yukicoder.me/submissions/92186
 最近shell芸も覚えてきたからbashでもよかったかな、と反省。
 
 DP(Dynamic Programming)は名前だけ聞いた事あったけど、
-ちゃんと学習できてよかった。復習がてらpaizaのDP問題に挑戦するのはよさそう。
+ちゃんと学習できてよかった。復習がてらpaizaのDP問題にも挑戦したら違う事でハマった。
