@@ -82,3 +82,17 @@ local-mesh1neko:~ iida-ryota$ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
 default   -        virtualbox   Stopped                 Unknown
 ```
+
+# ホストマシンのディレクトリをマウントする時
+-v オプションで「ホストマシンのパス:コンテナ内のパス」と指定する。
+```
+local-mesh1neko:docker iida-ryota$ mkdir html && cd html
+local-mesh1neko:html iida-ryota$ echo hello world > index.html
+local-mesh1neko:html iida-ryota$ curl `docker-machine ip`
+hello world
+local-mesh1neko:html iida-ryota$ sed -i -e 's/world/mesh1neko/g' index.html
+local-mesh1neko:html iida-ryota$ cat index.html
+hello mesh1neko
+local-mesh1neko:html iida-ryota$ curl `docker-machine ip`
+hello mesh1neko
+```
