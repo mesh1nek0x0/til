@@ -9,6 +9,7 @@ http://jmeter.apache.org/
 * 動的/静的ページもテストできる
 * not Web Browser(JavaScriptは動かない)
 * 動的にパラメータを変更したり、レスポンスを使ったり、細かい設定もできる
+* 負荷クライアントは分散できる
 ---
 
 ## 用語
@@ -58,6 +59,37 @@ HTTPリクエストを記録させる際の設定のこと
 * 正規表現でレスポンスから抽出
 * 全部とか、何個目にhitしたものかとかを指定できる
 
+#### Bean Scripting Framework(BSF)
+JMeterの変数をscript言語から操作できるようにしたJavaのクラス群
+
+* script言語からJavaのオブジェクトやメソッドにアクセスできる
+* JMeterにも各種BSFがある
+
+##### BSF Pre/PostProcessor
+リクエストを投げる前、レスポンスを受けた後の処理を記述できる。JMeterの変数を操作する。
+
+varsという変数にJMeterの変数が格納されている
+
+```
+// 取得
+vars.get("contentId");
+// 格納
+vars.put("contentId", "sample001");
+```
+
+##### BSF Listener
+リクエストの結果に対してごにょごにょできる。
+
+```
+var body = sampleResult.getResponseDataAsString();
+var json = eval("("+body+")");
+
+var token = json.result.token;
+vars.put("token", token);
+```
+
+// どうもPre/PostProcessorと似ていてやっかい
+
 ---
 
 ### スレッドグループ
@@ -68,6 +100,13 @@ HTTPリクエストを記録させる際の設定のこと
 * スレッドをどのくらいの間隔で立ち上げるのか（Ramp Up期間）
 * 各スレッドでHTTPリクエストを何回繰り返すのか（ループ回数）
 
+#### Debug Sampler
+JMeterの変数を格納しているvarsの中身を表示できる。
+
+なお、結果は「結果をツリーで表示」に出力。
+
+// ワークベンチでテストシナリオを作る時やトラブル時に役立ちそう
+
 ---
 
 ### HTTPクッキーマネージャー
@@ -76,6 +115,13 @@ HTTPリクエストを記録させる際の設定のこと
 * スレッドごとに値を保持する
 
 （ということはループの時は使いまわされるか？）
+
+---
+
+### HTTP認証マネージャ
+BASIC認証用
+
+※スレッドごとに変えたい場合は、「CSV Data Set Config」で
 
 ---
 
