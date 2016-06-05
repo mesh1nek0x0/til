@@ -115,3 +115,53 @@ $ grep '200,OK' -c test.jtl
 100198
 # リクエストのログには200,OKが100198あるらしい。なんでやねん。あとで調べてみよう。
 ```
+
+# おまけ：レポートまでコマンドラインで済ませる
+プラグインを入れればできるらしいので、やってみます。
+
+## コマンドラインプラグインの導入
+```
+$ pwd
+/Users/iida-ryota/Documents/til/jmeter/apache-jmeter-3.0
+# jmeterのディレクトリで...
+$ wget http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-1.4.0.zip
+--2016-06-05 20:42:18--  http://jmeter-plugins.org/downloads/file/JMeterPlugins-Standard-1.4.0.zip
+Resolving jmeter-plugins.org... 192.169.82.254
+Connecting to jmeter-plugins.org|192.169.82.254|:80... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: /files/JMeterPlugins-Standard-1.4.0.zip [following]
+--2016-06-05 20:42:19--  http://jmeter-plugins.org/files/JMeterPlugins-Standard-1.4.0.zip
+Reusing existing connection to jmeter-plugins.org:80.
+HTTP request sent, awaiting response... 200 OK
+Length: 1266201 (1.2M) [application/zip]
+Saving to: 'JMeterPlugins-Standard-1.4.0.zip'
+
+JMeterPlugins-Standard-1.4.0.zip   100%[==================================================================>]   1.21M   349KB/s   in 3.5s   
+
+2016-06-05 20:42:23 (349 KB/s) - 'JMeterPlugins-Standard-1.4.0.zip' saved [1266201/1266201]
+# 展開
+$ unzip JMeterPlugins-Standard-1.4.0.zip
+Archive:  JMeterPlugins-Standard-1.4.0.zip
+  inflating: lib/ext/JMeterPluginsCMD.sh  
+  inflating: lib/ext/TestPlanCheck.sh  
+  inflating: lib/ext/FilterResults.bat  
+  inflating: lib/ext/TestPlanCheck.bat  
+  inflating: lib/ext/JMeterPluginsCMD.bat  
+  inflating: lib/ext/FilterResults.sh  
+  inflating: lib/ext/JMeterPlugins-Standard.jar  
+  inflating: lib/ext/CMDRunner.jar   
+# とりあえず上書きしない
+replace LICENSE? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+replace README? [y]es, [n]o, [A]ll, [N]one, [r]ename: n
+
+# さきほどの実行ログからレポートを生成してみる
+$ ./lib/ext/JMeterPluginsCMD.sh --generate-csv report.csv --input-jtl ../trial/test.jtl --plugin-type AggregateReport
+
+# WARNがいくつかコンソールに流れたけど、無事にできたようです。
+$ column -s, -t < report.csv | cat
+sampler_label  aggregate_report_count  average  aggregate_report_median  aggregate_report_90%_line  aggregate_report_min  aggregate_report_max  aggregate_report_error%  aggregate_report_rate  aggregate_report_bandwidth  aggregate_report_stddev
+sample         100000                  0        0                        1                          0                     151                   0.00%                    2051.3                 426.7                       1.22
+合計           100000                  0        0                        1                          0                     151                   0.00%                    2051.3                 426.7                       1.22
+
+# 値がさっきと微妙に違うのはテストをやり直して、結果が違うだけね！
+```
