@@ -1,17 +1,18 @@
+
 # docker 入門
 かつてboot2docker入れていた時代と変わっていたのでちょっとおさらい。
 
 # 仮想マシンの一覧確認
 ```
 # defaultはtool boxを入れたときにポチポチボタンを押しているとできている
-local-mesh1neko:~ iida-ryota$ docker-machine ls
+$ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER    ERRORS
 default   -        virtualbox   Running   tcp://192.168.99.100:2376           v1.11.1
 ```
 
 # 仮想マシンの作成
 ```
-local-mesh1neko:~ iida-ryota$ docker-machine create --driver virtualbox hoge
+$ docker-machine create --driver virtualbox hoge
 Running pre-create checks...
 Creating machine...
 (hoge) Copying /Users/iida-ryota/.docker/machine/cache/boot2docker.iso to /Users/iida-ryota/.docker/machine/machines/hoge/boot2docker.iso...
@@ -34,7 +35,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 # もちろんlsすると増えてる
 
-local-mesh1neko:~ iida-ryota$ docker-machine ls
+$ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER    ERRORS
 default   -        virtualbox   Running   tcp://192.168.99.100:2376           v1.11.1
 hoge      -        virtualbox   Running   tcp://192.168.99.101:2376           v1.11.1
@@ -42,7 +43,7 @@ hoge      -        virtualbox   Running   tcp://192.168.99.101:2376           v1
 
 # 作成したマシンにホストOSから接続する
 ```
-local-mesh1neko:~ iida-ryota$ docker-machine env hoge
+$ docker-machine env hoge
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.101:2376"
 export DOCKER_CERT_PATH="/Users/iida-ryota/.docker/machine/machines/hoge"
@@ -53,19 +54,19 @@ export DOCKER_MACHINE_NAME="hoge"
 # このevalの欄を実行すると作ったマシンと通信した状態になる(docker [cmd]が使える)
 
 # ちなみにIPだけ知りたい時は下記の通り
-local-mesh1neko:~ iida-ryota$ docker-machine ip hoge
+$ docker-machine ip hoge
 192.168.99.101
 ```
 
 # マシンを止める時
 ```
-local-mesh1neko:~ iida-ryota$ docker-machine stop hoge
+$ docker-machine stop hoge
 Stopping "hoge"...
 Machine "hoge" was stopped.
-local-mesh1neko:~ iida-ryota$ docker-machine stop default
+$ docker-machine stop default
 Stopping "default"...
 Machine "default" was stopped.
-local-mesh1neko:~ iida-ryota$ docker-machine ls
+$ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
 default   -        virtualbox   Stopped                 Unknown
 hoge      -        virtualbox   Stopped                 Unknown
@@ -73,12 +74,12 @@ hoge      -        virtualbox   Stopped                 Unknown
 
 # マシンを削除する時
 ```
-local-mesh1neko:~ iida-ryota$ docker-machine rm hoge
+$ docker-machine rm hoge
 About to remove hoge
 Are you sure? (y/n): y
 Successfully removed hoge
 # ちゃんと消えている
-local-mesh1neko:~ iida-ryota$ docker-machine ls
+$ docker-machine ls
 NAME      ACTIVE   DRIVER       STATE     URL   SWARM   DOCKER    ERRORS
 default   -        virtualbox   Stopped                 Unknown
 ```
@@ -86,13 +87,28 @@ default   -        virtualbox   Stopped                 Unknown
 # ホストマシンのディレクトリをマウントする時
 -v オプションで「ホストマシンのパス:コンテナ内のパス」と指定する。
 ```
-local-mesh1neko:docker iida-ryota$ mkdir html && cd html
-local-mesh1neko:html iida-ryota$ echo hello world > index.html
-local-mesh1neko:html iida-ryota$ curl `docker-machine ip`
+# マウントしたいディレクトリを作っておいて
+$ mkdir html && cd html
+$ echo hello world > index.html
+$ docker run -v `pwd`:/var/www/html -d -p 80:80 eboraas/apache
+
+$ curl `docker-machine ip`
 hello world
-local-mesh1neko:html iida-ryota$ sed -i -e 's/world/mesh1neko/g' index.html
-local-mesh1neko:html iida-ryota$ cat index.html
+$ sed -i -e 's/world/mesh1neko/g' index.html
+$ cat index.html
 hello mesh1neko
-local-mesh1neko:html iida-ryota$ curl `docker-machine ip`
+$ curl `docker-machine ip`
 hello mesh1neko
+```
+
+# 各containerに接続するとき
+```
+$ docker ps -a -q
+5ab7dbb20cc0
+$ docker exec -it 5ab /bin/bash
+---5ab7dbb20cc0@container
+root@5ab7dbb20cc0:/# ls
+bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv  sys  tmp  usr  var
+root@5ab7dbb20cc0:/# exit
+exit
 ```
