@@ -112,3 +112,41 @@ bin  boot  dev	etc  home  lib	lib64  media  mnt  opt	proc  root  run  sbin  srv 
 root@5ab7dbb20cc0:/# exit
 exit
 ```
+
+# 自動でホストのポートとマッピングする
+-Pオプションを指定すれば、コンテナ内部で必要なポートを、ホストの空いているポートとマッピングしてくれます。
+```
+# たとえばMySQLがデフォルトとで3306のポートを使います。
+$ docker run --name some-mysql -P -e MYSQL_ROOT_PASSWORD=toor -d mysql:latest
+b549ac56a3461b508a633d007cc82a75c0b27fb2b4815e1a65e0902093e8fc77
+$ docker ps -l
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                     NAMES
+b549ac56a346        mysql:latest        "docker-entrypoint.sh"   36 seconds ago      Up 15 seconds       0.0.0.0:32770->3306/tcp   some-mysql
+# ホスト側の32770がコンテナ側の3306にマッピングされている
+#（ホストから`docker-machine ip`:32770で接続可能）
+```
+
+# 最後に立ち上げたコンテナのIDを表示する時
+-lオプションと-qオプションを使うとよい
+```
+# さっき立ち上げたMySQLのコンテナのIDがわかる
+$ docker ps -lq
+b549ac56a346
+```
+
+# 割り当てたポートを確認したい
+コンテナIDや名前からホスト側のポートがわかります（docker psだとみきれるんじゃいという人も安心）
+```
+# 最後に立てたコンテナのIDを取得してポートを確認してる
+$ docker port `docker ps -lq`
+3306/tcp -> 0.0.0.0:32772
+```
+
+# コンテナ内のプロセスを確認したい
+同じみtopコマンドがあります
+```
+# ちゃんとmysql立てたのでmysqldがいますね！
+docker top `docker ps -lq`
+UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
+999                 2290                2279                0                   15:28               ?                   00:00:00            mysqld
+```
