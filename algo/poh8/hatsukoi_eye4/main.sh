@@ -1,7 +1,7 @@
 #!/bin/bash
-read n < /dev/stdin
-m=`expr $n + 1`
-a=`awk '(NR > 1){print $0}'`
-echo $a | sed -e 's/ /\n/g' | sort -rn | sed -n `expr $m / 2`p
-
-# TODO:2016/06/16 通らないテストケースがある...orz
+# 前回までは標準入力の取り方とsedで行を出すのがよくなかった模様
+INPUT=`cat --`
+IFS=$'\n'
+set -- $INPUT
+CENTER=$(( ($1+1)/2 ))
+echo $2 | sed -e 's/\s/\n/g' | sort -rn | tail -n $CENTER | head -1
