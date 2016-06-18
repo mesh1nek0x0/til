@@ -50,3 +50,22 @@ e.g.
 > -- はオプションの終わりを示し、それ以降のオプション処理を行いません。
 > -- 以降の引き数は全て、ファイル名や引き数として扱われます。 引き数 - は -- と同じです。
 渡す引数がオプション名とかぶったりすることもあるでしょう、うん。
+
+## 算術式展開:$(())
+bashで演算をするときにお世話になる。exprよりオススメ。
+
+> Arithmetic Expansion
+>       Arithmetic  expansion allows the  evaluation of an arithmetic expression
+>       and the substitution of the result.  The format for  arithmetic  expansion is:
+
+>     $((expression))
+> from man of bash
+
+```
+$ echo 1+2 # そのまま書くと文字列扱い
+1+2
+$ echo $((1+2)) # 数式として処理する
+3
+$ echo $(( (1+2)/3 )) # わかりやすくスペースを空けてる
+1
+```
