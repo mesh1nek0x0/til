@@ -1,6 +1,19 @@
-
 # docker 入門
 かつてboot2docker入れていた時代と変わっていたのでちょっとおさらい。
+
+# 用語
+## docker レジストリ
+各イメージの置き場所。リポジトリ単位でまとめられる。
+
+```
++-docker hub---+ # <- registory
+|+-ubuntu-----+| # <- repository
+||latest image|| # <- image
+||  2.0  image|| # <- image...
+||  2.3  image||
+|+------------+|
++--------------+
+```
 
 # 仮想マシンの一覧確認
 ```
@@ -149,4 +162,58 @@ $ docker port `docker ps -lq`
 docker top `docker ps -lq`
 UID                 PID                 PPID                C                   STIME               TTY                 TIME                CMD
 999                 2290                2279                0                   15:28               ?                   00:00:00            mysqld
+```
+
+# 実行したコンテナを起動したまま抜ける
+Ctrl + p + qでできる。
+```
+$ docker run -i -t ubuntu /bin/bash
+root@da2c38169f57:/# [Ctrl + p + q]
+$ docker ps -a
+CONTAINER ID        IMAGE                    COMMAND             CREATED             STATUS                      PORTS                     NAMES
+da2c38169f57        ubuntu                   "/bin/bash"         22 seconds ago      Up 21 seconds                                         reverent_hopper
+```
+
+# コンテナの一覧のフィルター
+--filter <name=value>
+```
+$ docker ps -aq # 長いのでqオプションでショートIDのみ
+da2c38169f57
+ea3fbcf18900
+7dec8d5a9902
+$ docker ps -aq --filter status=running
+da2c38169f57
+7dec8d5a9902
+$ docker ps -aq --filter status=exited
+ea3fbcf18900
+```
+
+# コンテナのログを確認する
+logs --tail <num>
+```
+$ docker run -d ubuntu:14.04 ping 127.0.0.1 -c 100
+ba833c19f0c89c71f6dcbec37fe2926834fccddf260a0321e9d60c583e117379
+$ docker logs ba8 | wc -l
+      45
+$ docker logs --tail 5 ba8 | wc -l # 今回は--tailで最新の5件だけ
+       5
+```
+
+# inspectの結果をjson形式で
+-f, --formatでjsonと指定する
+```
+$ docker network inspect -f "{{json .Containers}}" 005
+{"7dec8d5a99029316b842fb7b3d19325ba8005d772c746c1a4e55cff0610a8e09":{"Name":"modest_engelbart","EndpointID":"3da1e44399293448a9c6c46e0d89d0306b5b4b995662dcdc51f4eec093bfcdba","MacAddress":"02:42:ac:11:00:02","IPv4Address":"172.17.0.2/16","IPv6Address":""}}
+# jqコマンドとかでつなげるとみやすい
+$ docker network inspect -f "{{json .Containers}}" 005 | jq .
+{
+  "7dec8d5a99029316b842fb7b3d19325ba8005d772c746c1a4e55cff0610a8e09": {
+    "Name": "modest_engelbart",
+    "EndpointID": "3da1e44399293448a9c6c46e0d89d0306b5b4b995662dcdc51f4eec093bfcdba",
+    "MacAddress": "02:42:ac:11:00:02",
+    "IPv4Address": "172.17.0.2/16",
+    "IPv6Address": ""
+  }
+}
+
 ```
