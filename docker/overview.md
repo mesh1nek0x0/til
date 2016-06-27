@@ -181,11 +181,18 @@ $ docker ps -aq # 長いのでqオプションでショートIDのみ
 da2c38169f57
 ea3fbcf18900
 7dec8d5a9902
+## statusでフィルタ
 $ docker ps -aq --filter status=running
 da2c38169f57
 7dec8d5a9902
 $ docker ps -aq --filter status=exited
 ea3fbcf18900
+
+## 特定のイメージでフィルタ:ancestorは祖先の意
+$ docker ps -aq --filter ancestor=mesh1neko/myimage:1.2
+097fc5297b2e
+e5ec8ede4c41
+
 ```
 
 # コンテナのログを確認する
