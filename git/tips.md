@@ -32,5 +32,29 @@ export PS1='\h\[\033[00m\]:\W\[\033[31m\]$(__git_ps1 [%s])\[\033[00m\]\$ '
 
 編集を終えたらsourceでパスの追加を反映します。
 ```
-$ source .bashrc
+$ source .bashrc # これで補完が効きます、補完を試しながら作業状態の確認もしてみます
 til[master]$ # こんな風に$の前に作業状態がでます。
+til[master *]$ git status # 変更があると*がつきます。
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   git/tips.md
+...
+[master *]$ git add git/tips.md
+
+[master +]$ git status # stageにaddされると+になります。
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+	modified:   git/tips.md
+...
+[master +]$ git commit -m "[wip]fix git/tips.md" # commitすると
+  [master b55ac7b] [wip]fix git/tips.md
+   1 file changed, 19 insertions(+)
+til[master]$ # マークは取れます
+```
