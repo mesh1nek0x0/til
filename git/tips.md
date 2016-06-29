@@ -58,3 +58,22 @@ Changes to be committed:
    1 file changed, 19 insertions(+)
 til[master]$ # マークは取れます
 ```
+
+## macにgitが入っていたのをhomebrewに変更したい
+homebrewをそのまま入れられるらしい
+
+cf. [[qiita]MacのHomeBrewでGitを2.7.0にアップデートしよう](http://qiita.com/suzutan/items/44bcf20df711675c525c)
+
+```
+$ git --version
+git version 2.7.4 (Apple Git-66)
+$ brew install git
+...
+$ git --version
+git version 2.7.4 (Apple Git-66) # この時点ではまだ/usr/bin/gitが優先されている
+## .bash_profileを以下のように変更して以下の様になればOK
+$ cat .bash_profile
+export PATH=/usr/local/bin:$PATH
+$ git --version
+git version 2.6.0 # これでめでたくmacのgitからおさらばできた！
+```
