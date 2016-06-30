@@ -10,7 +10,7 @@ shellが起動した時に実行される。
 $ cat .bashrc
 echo "<This is bashrc.>"
 
-Last login: Wed Jun 29 23:05:55 on ttys000 # 新しくwindowを開いた
+Last login: Wed Jun 29 23:05:55 on ttys000 # 新しくログインした
 <This is bashrc.>
 $
 $ bash # bashを実行してもでるよ
