@@ -210,6 +210,55 @@ file-a.txt  file-b.txt # ちゃんと展開されている！
 root@1a971e67bc36:/home/root# exit
 ```
 
+### VOLUME命令
+* コンテナにボリュームをマウントできる
+* ホストのディレクトリはマウントできない // 自動で作るのにホストに依存したら制限になってしまう
+* 文字列 or JSONの配列で指定する
+* ボリュームはコンテナ作成時に初期化される
+　（ボリューム内に設定ファイルなどが必要な場合は先に配置してからVOLUME指定する）
+
+```
+$ cat Dockerfile
+# comment
+FROM ubuntu:14.04
+MAINTAINER image-test <mesh1neko@gmail.com>
+RUN mkdir -p /data/myvol && \
+echo "hello from dockerfile volume." > /data/myvol/init.txt
+VOLUME /data/myvol
+
+$ docker build -t test:1.1 .
+Sending build context to Docker daemon 4.096 kB
+Step 1 : FROM ubuntu:14.04
+ ---> 38c759202e30
+Step 2 : MAINTAINER image-test <mesh1neko@gmail.com>
+ ---> Using cache
+ ---> 9993f49e4b72
+Step 3 : RUN mkdir -p /data/myvol && echo "hello from dockerfile volume." > /data/myvol/init.txt
+ ---> Running in e92052de5fa7
+ ---> fb1dfed1dfec
+Removing intermediate container e92052de5fa7
+Step 4 : VOLUME /data/myvol
+ ---> Running in 21ebec078a0e
+ ---> ea825bc8764a
+Removing intermediate container 21ebec078a0e
+Successfully built ea825bc8764a
+$ docker images test:1.1
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+test                1.1                 ea825bc8764a        12 minutes ago      196.6 MB
+$ docker run -it test:1.1 bash
+root@da19f3f86456:/# cd data/myvol/
+root@da19f3f86456:/data/myvol# cat init.txt
+hello from dockerfile volume. # ちゃんと指定したものがある
+root@da19f3f86456:/data/myvol# exit
+exit
+$ docker inspect -f '{{json .Mounts}}' da19f3f86456 # マウントされている
+[{"Name":"d315ded5d20595542b03aecc8dfc444eecebb397bfffdf0dab6e78515084905f","Source":"/mnt/sda1/var/lib/docker/volumes/d315ded5d20595542b03aecc8dfc444eecebb397bfffdf0dab6e78515084905f/_data","Destination":"/data/myvol","Driver":"local","Mode":"","RW":true,"Propagation":""}]
+local-mesh1neko:dockerfile
+```
+
+### EXPOSE命令
+* コンテナがリッスンするポートを指定します。
+
 ## build
 Dockerfileを元に構築を実行します。構築時は以下の様に-tをつけるのが一般的らしい
 ```
