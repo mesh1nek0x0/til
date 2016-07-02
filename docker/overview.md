@@ -224,3 +224,12 @@ $ docker network inspect -f "{{json .Containers}}" 005 | jq .
 }
 
 ```
+
+# コンテナ名のrename
+```
+$ docker ps -al --format '{{.ID}} {{.Names}}' # 最後に実行したコンテナのIDと名前を表示
+da19f3f86456 focused_spence
+$ docker rename focused_spence mycontainer
+$ docker ps -al --format '{{.ID}} {{.Names}}'
+da19f3f86456 mycontainer # IDはそのままで名前が切り替わっている！
+```
