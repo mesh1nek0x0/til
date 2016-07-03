@@ -253,4 +253,9 @@ attach   create   exec     images   kill     logs     port     rename   run     
 build    daemon   export   import   load     network  ps       restart  save     stats    top      volume   
 commit   diff     help     info     login    node     pull     rm       search   stop     unpause  wait     
 cp       events   history  inspect  logout   pause    push     rmi      service  swarm    update
+## イメージやコンテナのIDも補完できる
+$ docker run eboraas/apache <tab>
+eboraas/apache         eboraas/apache:latest
+$ docker start <tab>
+7dec8d5a99029316b842fb7b3d19325ba8005d772c746c1a4e55cff0610a8e09  modest_engelbart
 ```
