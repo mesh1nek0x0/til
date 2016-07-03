@@ -233,3 +233,24 @@ $ docker rename focused_spence mycontainer
 $ docker ps -al --format '{{.ID}} {{.Names}}'
 da19f3f86456 mycontainer # IDはそのままで名前が切り替わっている！
 ```
+
+# dockerコマンドの補完
+bash-completionを使ったdockerコマンドの補完ができるようになります。
+bash_completion自体はbrewでいれるみたいだけど、入れてないのに入ってた...おや...？
+```
+## この際、ちゃんと入れておく
+$ brew install bash-completion
+$ vim ~/.bash_profile
+### 末尾に追記
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+## dockerコマンド補完のshを投げ込む
+$ wget https://raw.githubusercontent.com/docker/docker/master/contrib/completion/bash/docker -O /usr/local/etc/bash_completion.d/docker-completion.sh
+$ source .bash_profile
+$ docker <tab> # yeah!!!
+attach   create   exec     images   kill     logs     port     rename   run      start    tag      version  
+build    daemon   export   import   load     network  ps       restart  save     stats    top      volume   
+commit   diff     help     info     login    node     pull     rm       search   stop     unpause  wait     
+cp       events   history  inspect  logout   pause    push     rmi      service  swarm    update
+```
