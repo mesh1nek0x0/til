@@ -24,3 +24,6 @@ hello from 002 # ちゃんと意図したメッセージがでてる！
 > Backlog is the maximum length of the queue of pending connections. The actual length will be determined by your OS through sysctl settings such as tcp_max_syn_backlog and somaxconn on linux. The default value of this parameter is 511 (not 512).
 
 cf. https://nodejs.org/api/http.html#http_server_listen_port_hostname_backlog_callback
+
+# console.log
+nodeを実行したwindowの方にログが出ます。
