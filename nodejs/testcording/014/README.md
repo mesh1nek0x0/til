@@ -57,7 +57,7 @@ Server is running at http://localhost:8080
 request has come!
 hoge=foo&piyo=bar # 意図通りになりました。
 ```
-readableイベント？とreq.read()について調べます。
+readableイベント？、endイベント、それからreq.read()について調べます。
 
 ## Event: 'readable'
 Streamというインターフェースで提供される。ざっと見た感じファイルのデータ読み込みや、リクエストパラメータのデータ読み込みイベントとして使われている模様。
@@ -85,6 +85,13 @@ hoge=foo&piyo=bar&hoge=foo
 ```
 
 cf. https://nodejs.org/api/stream.html#stream_readable_read_size
+
+## Event: 'end'
+これもどうやらStreamインターフェースで提供されるイベントのようですね。
+
+提供するデータがもう無くなった場合に生成されるそうです。
+
+cf. https://nodejs.org/api/stream.html#stream_event_end
 
 ## おまけ
 getパラメータみたいにurlパースはできないけど、どうやるのか調べてみた。
