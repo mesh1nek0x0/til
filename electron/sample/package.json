@@ -1,0 +1,15 @@
+{
+  "name": "sample",
+  "version": "0.0.0",
+  "description": "サンプル",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Sample/sample.git"
+  },
+  "author": "mesh1neko",
+  "license": "MIT"
+}

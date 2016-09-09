@@ -1,0 +1,17 @@
+{
+  "name": "gulp-sample",
+  "version": "1.0.0",
+  "description": "glup quick start sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "mesh1neko",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1"
+  }
+}

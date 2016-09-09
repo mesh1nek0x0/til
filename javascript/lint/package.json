@@ -1,0 +1,17 @@
+{
+  "name": "lint-sample",
+  "version": "1.0.0",
+  "description": "sample for lint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lint"
+  ],
+  "author": "mesh1neko",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^3.3.1"
+  }
+}

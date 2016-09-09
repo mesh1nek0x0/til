@@ -9,11 +9,11 @@
 日本語で解釈せずにデフォルトのロケール（英語？）が使用されるらしい。
 
 ```bash
-local-mesh1neko:tmp iida-ryota$ LC_ALL=C date
+$ LC_ALL=C date
 Wed Apr  6 00:08:27 JST 2016
-local-mesh1neko:tmp iida-ryota$ date
+$ date
 2016年 4月 6日 水曜日 00時08分31秒 JST
-local-mesh1neko:tmp iida-ryota$ 
+$
 
 # 指定なしだとエラーが出る
 sort word.list
@@ -22,4 +22,3 @@ sort: Set LC_ALL='C' to work around the problem.
 # 指定があればエラーは出ない
 LC_ALL=C sort word.list
 ```
-
