@@ -1,0 +1,17 @@
+{
+  "name": "node-promise-sample",
+  "version": "1.0.0",
+  "description": "promise sample",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "mesh1neko",
+  "license": "MIT",
+  "devDependencies": {
+    "xmlhttprequest": "^1.8.0"
+  }
+}
