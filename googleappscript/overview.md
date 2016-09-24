@@ -84,3 +84,75 @@ function myFunction() {
   }
 }
 ```
+## イベントハンドラ
+なにかしらのアクションがあったときに実行される。JSではお馴染みですね。
+
+GoogleAppScriptではアプリケーションに応じたEventオブジェクトが用意されているようです。
+https://developers.google.com/apps-script/guides/triggers/events
+
+以下のような形式で定義する
+```
+function on***(event) {
+  // hoge foo bar
+}
+```
+
+* Google Sheets
+ * Open
+ * Change
+ * Edit
+ * Form submit
+* Google Docs
+ * Open
+* Google Form
+ * Open
+ * Form submit
+* Add On
+ * install
+* Time-driven
+
+### シンプル・インストーラブル・トリガー
+イベントハンドラには種類があります。
+
+* シンプルイベントハンドラ
+ * 決まった関数名に対して紐付いているため、簡単に使えるが1イベントに対して、複数のfunctionは割り当てられない。
+
+* インストーラブルイベントハンドラ
+ * イベントに対して、自由に処理の紐付けができる。追加の設定は必要だが、１イベントに対して複数のfunctionの割り当てができる。
+ この設定がトリガーである。
+
+参考したページによると...
+>インストーラブル・イベントハンドラの引数には、sourceプロパティはありません。
+
+ただし、Editイベントは、シンプルでもインストーラブルでもあるので（おそらく２つのインターフェースを継承している？）ので
+トリガーで設定しても、シンプルのときと同じプロパティが取得できるようです。
+```
+[16-09-24 16:29:08:510 JST] {authMode=FULL, range=Range, oldValue=27.0, source=Spreadsheet, value=3, triggerUid=1164505138}
+```
+
+じゃあ、Changeイベントでトリガーを設定すると...
+```
+function testonChange(e) {
+  Browser.msgBox(Utilities.jsonStringify(e));
+}
+---
+### oh...?
+{"authMode":"FULL","source":"Spreadsheet","triggerUid":1147772149,"changeType":"EDIT"}
+{"authMode":"FULL","source":"Spreadsheet","triggerUid":1147772149,"changeType":"INSERT_ROW"}
+```
+
+なんでや！sourceついてますやん、、、よーわかりませんがな。。。公式のマニュアルのプロパティには載っていないのですが。
+
+cf. https://developers.google.com/apps-script/guides/triggers/events#change
+
+気になってTime-drivenの方も確認してみた
+```
+function timeTriger(event) {
+    var sheet = SpreadsheetApp.getActiveSheet();
+    sheet.getRange("A2").setValue(Utilities.jsonStringify(event));
+    sheet.getRange("A1").setValue(event.minute + "(m)" + event.second + "(s)");
+}
+---
+### こっちにはsourceは入ってないですね！
+{"authMode":"FULL","week-of-year":38,"day-of-week":6,"month":9,"hour":10,"year":2016,"timezone":"UTC","day-of-month":24,"triggerUid":1062176184,"minute":59,"second":23}
+```
