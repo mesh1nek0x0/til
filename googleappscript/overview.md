@@ -156,3 +156,14 @@ function timeTriger(event) {
 ### こっちにはsourceは入ってないですね！
 {"authMode":"FULL","week-of-year":38,"day-of-week":6,"month":9,"hour":10,"year":2016,"timezone":"UTC","day-of-month":24,"triggerUid":1062176184,"minute":59,"second":23}
 ```
+
+## menuの追加
+図形描画でボタン割り当ててもいいけど、これがないと使い勝手悪いですよね！
+
+SpreadsheetAppオブジェクトから追加できるようなので、onOpenイベント時に追加してあげましょう！
+
+
+## 全体像
+学びながらまとめたクラス図はこちら。
+
+![](https://lh3.googleusercontent.com/Hpt-B7K1fDBBAhOM0G4SpzdegriIs2jTLA2EmtlXMRYi7RjFw_KkoTVOwjcd4fgPzhP_c-cp_R7t21ca9FMZ1Vb0FHKVNX0ESFniiWR5wI0IjvKUtRSXbsG57W6grAgqBo-lYhWIykw6OW96fP9fVF943k0kD2L1qiOG7rvG9TZUIXoV-SCsfC40avI8QpXXZTqALjal96Ks8KNWALqbEiwO9KsLp7L8diu0N13ua3KYhXGSua6QjxZK4IUqDxgjdcEz1qkue1YoPETbh2vZlNrWkwQjbPvnBWuJ-tNAjweWEVNEQmNXKleptttqewmGXgbkPIitvTXABHPTx9qxXMiFqR1hIdQhgQEPx8O9IMwoJ7YBHUQNuR3EU-EgQ9y094805yiIUvyJf9m6cghgnIkfw21mDaNrRWEK2bqlkZq2o7iaH1U_nfFZOc9SHo0eunK2RKLFzn1zIEKCvOYo6-LduNc4xWavHWEtfl-qVmwjn3pa2ZYFJNxEsGUd0qNLzlH1NlpB6kl72EQtvL1Y6rHNWisnZlB0M3pYC9V_aynrMbRhWAtxcHlPIA8j90B9AvmIFta45Gd3oR8z27yv60c8IHHl20V5b106WuVNgmsrhBd9=w938-h939-no)
