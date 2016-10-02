@@ -16,6 +16,31 @@ alert("hoge");
 複数のGASファイルをまとめて１つのプロジェクトとして扱えるので、そこそこの規模のスクリプトもかける。
 結構夢が広がりますが、無理にGASでやろうとしそうなのは危ないところですね。適材適所を意識したいところ。
 
+### ライブラリとしてのimport/export
+プロジェクトは[ファイル]→[プロジェクトのプロパティ]より"プロジェクトキー"という項目が用意されています。
+
+この値を別のプロジェクトから読み込ませることで利用できます。
+
+たとえばUnderscoreGSのプロジェクトキーを読み込んでおくと、以下のように利用できます。
+
+```
+function myFunction() {
+  var sortedOut = [1,2,3,4,5,6,7,8,9];
+  var mixedUp = UnderscoreGS._shuffle(sortedOut);
+  Logger.log(mixedUp);
+}
+```
+
+なお、インポートは
+[リソース]→[ライブラリ]にてプロジェクトキーを入力して検索してください。バージョンの指定もお忘れなく。
+
+ここで入力した識別子(identifier)はGAS内でidentifier.method()という形になります。
+
+また、開発モードにするとバージョンの指定に関係なく最新のコードが取得されるようです。ほ〜！
+
+cf. [Notable Script Libraries](https://developers.google.com/apps-script/notable-script-libraries)
+cf. [GASのライブラリを使って楽したい② 外部のJSライブラリを使ってみる(:3」[＿]﻿](http://qiita.com/soundTricker/items/5a7e050a2a20f3e3938a)
+
 ## 簡単なサンプル
 最初はマクロっぽく使うのがよいようです。
 適当なスプレッドシートを開き[ツール]->[スクリプトエディタ]で以下のコードを書いて実行するとhello worldできる。
