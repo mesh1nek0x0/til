@@ -1,5 +1,5 @@
 <?php
-define('LOG_LEVEL', 'INFO');
+define('LOG_LEVEL', 'NO');
 
 // 方向を360度の円で考え、TURN_UNITの剰余の絶対値を地図上の向きとする
 define('TURN_UNIT', 90);
@@ -10,7 +10,7 @@ define('DIRECTION_LEFT', 2);
 define('DIRECTION_DOWN', 3);
 
 
-define('MAX_ACTION', 10);
+define('MAX_ACTION', 10000000);
 define('FORWARD_WAY', 0);
 define('RIGHT_WAY', 1);
 define('LEFT_WAY', 2);
@@ -82,6 +82,10 @@ while ($action < MAX_ACTION) {
             $nowDirection = ($nowDirection + TURN_UNIT) % TURN_AROUND;
             $nowPosition = $map->getPositionByDirection($nowPosition, $nowDirection / TURN_UNIT);
             break;
+        case NO_WAY:
+            $nowDirection = ($nowDirection + TURN_UNIT * 2) % TURN_AROUND;
+            $nowPosition = $map->getPositionByDirection($nowPosition, $nowDirection / TURN_UNIT);
+            break;
     }
     loggerDebug($action.":after");
     loggerDebug($nowPosition);
@@ -93,6 +97,24 @@ while ($action < MAX_ACTION) {
 
 loggerDebug("memo");
 loggerDebug($memo);
+
+foreach ($memo as $direction) {
+    switch ($direction) {
+        case DIRECTION_RIGHT:
+            $route = 'R';
+            break;
+        case DIRECTION_UP:
+            $route = 'U';
+            break;
+        case DIRECTION_LEFT:
+            $route = 'L';
+            break;
+        case DIRECTION_DOWN:
+            $route = 'D';
+            break;
+    }
+    echo $route, PHP_EOL;
+}
 
 /**
  * @param $courseStatus
