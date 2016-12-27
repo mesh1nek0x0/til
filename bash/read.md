@@ -26,6 +26,32 @@ type msg:hoge
 msg is hoge
 ```
 
+## tips
+-sオプションを使うとreadへの入力はechoされない（パスワード入力などに使う）ので便利ですが
+
+Enterはreadに含まれるため、ちょっと工夫しないと表示がいけてない感じになります。
+
+```
+### 工夫もした場合
+$ read -p 'type pass:' -s pass; echo ; echo -e "pass is $pass"
+type pass:
+pass is hoge
+
+### -sありだけの場合
+$ read -p 'type pass:' -s pass; echo -e "pass is $pass"
+type pass:pass is pass # pass is ...は改行されてほしい...
+
+### -sなしだけの場合
+$ read -p 'type pass:' pass; echo -e "pass is $pass"
+type pass:hoge
+pass is hoge
+```
+
+※ただし、パイプでつなぐとecho一つだと今度は改行が多くなってしまうため以下のようにするとよいようです。
+```
+tty -s && echo ;
+```
+
 ## コマンドの種類
 内部コマンドも内部コマンドも外部コマンドもあるようです。
 ```
