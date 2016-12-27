@@ -28,6 +28,42 @@ not a tty
 1
 ```
 
+## 使い方
+### 実用的な使い方
+-sをつけて端末からの利用かどうかを判定して使う？
+
+### 意味はないけど楽しい使い方
+terminalを複数立ち上げて別のterminalに出力を投げることができます。
+
+出力結果を複数の端末に出したりすれば意味は出せそう。
+
+```
+$ who
+iida-ryota console  Dec 14 20:17
+iida-ryota ttys000  Dec 27 23:20
+iida-ryota ttys002  Dec 27 23:20
+$ tty
+/dev/ttys000
+```
+
+```
+$ tty
+/dev/ttys002
+```
+この状態でttys000からttys0002へ出力を出せます。
+```
+### ttys000
+$ echo 'This is '`tty` > /dev/ttys002
+$
+```
+
+```
+### ttys002
+$ This is /dev/ttys000
+
+$
+```
+
 ## コマンドの種類
 これはビルドインコマンドはないようですね。
 ```
