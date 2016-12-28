@@ -69,3 +69,41 @@ $ echo $((1+2)) # 数式として処理する
 $ echo $(( (1+2)/3 )) # わかりやすくスペースを空けてる
 1
 ```
+
+## 他のスクリプトを読み込む
+.(dot)を指定するとできます。
+
+```
+### 呼び出されるファイルです
+$ cat function.sh
+#!/bin/bash
+msg="hogehoge"
+
+function showMsg() {
+    echo "msg is "$1
+}
+
+### 呼び出すファイルです
+$ cat main.sh
+#!/bin/bash
+echo "This is $0"
+
+## この時点では定義されていません
+echo $hoge
+showMsg "msg"
+
+. ./function.sh # ここで読み込まれます
+
+## これ以降は読み込まれた内容が反映されるはずです
+echo $msg
+showMsg "msg"
+
+### 実際に実行してみます
+$ ./main.sh
+This is ./main.sh
+ # でてないですね
+./main.sh: line 5: showMsg: command not found # not foundですね！
+hogehoge # でてますね！
+msg is msg # こっちもでてますね！
+
+```
