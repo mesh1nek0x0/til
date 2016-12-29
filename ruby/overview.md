@@ -129,3 +129,37 @@ price is #{200 * 8}
 msg is hoge
 hogehogehogehogehogehogehogehogehogehoge
 ```
+
+## ?と!メソッド
+!:オブジェクトの値を変えちゃうので破壊的メソッド
+?:真偽値を返すメソッド
+
+```
+$ ruby bangBooleanMethod.rb
+HOGE
+hoge
+HOGE
+HOGE
+false
+true
+```
+
+## 配列
+* 配列は()でなく[]です
+* 添字には負の値も指定できる
+* [0..n] 0~n以下
+* [0...n] 0~n未満
+* 数はcountではなくsize
+
+```
+$ ruby array.ruby
+"pen"
+"hoge"
+["pen", "apple", "hoge"]
+["pen", "apple"]
+["red", "gray"]
+["red", "gray", "blue"]
+["red", "gray", "blue", "green"]
+```
+
+
