@@ -108,3 +108,24 @@ Float
 3
 (8/1)
 ```
+
+### 文字列オブジェクト
+これもbashと同じ感じですね
+
+"":特殊文字と式展開可能
+'':何もしない
+
+文字列の連結は+でできて、*をすると繰り返しになる、便利ですね。
+
+```
+$ ruby basicStringObject.md
+hello
+ruby	!!!
+hello\nruby\t!!!
+msg is hoge
+msg is #{msg}
+price is 1600
+price is #{200 * 8}
+msg is hoge
+hogehogehogehogehogehogehogehogehogehoge
+```
