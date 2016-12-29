@@ -68,3 +68,23 @@ variables.rb:11: warning: already initialized constant VERSION
 variables.rb:8: warning: previous definition of VERSION was here
 2.0
 ```
+
+## オブジェクト
+rubyは全てがオブジェクトだそうです。jsみたいですかね。
+
+```
+$ ruby basicObject.rb
+hello ruby!
+11
+!ybur olleh
+2
+1
+```
+
+基本的なメソッド
+```
+### クラス名取得
+Object.class
+### メソッド一覧取得
+Object.methods
+```
