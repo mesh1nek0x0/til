@@ -54,3 +54,17 @@ $ ruby basicNotation.rb
 hello rubyhello ruby
 "hello ruby"
 ```
+
+## 変数と定数
+* 英小文字または_から始める
+* 英大文字だと定数扱いになる
+ * ただし、定数なので上書きできない...と思いつつwarningが出るだけで上書きできちゃう
+
+```
+$ ruby variables.rb
+hello ruby
+1.0
+variables.rb:11: warning: already initialized constant VERSION
+variables.rb:8: warning: previous definition of VERSION was here
+2.0
+```
