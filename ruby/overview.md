@@ -170,7 +170,7 @@ $ ruby array.ruby
  * シンボルを使って書く場合の短縮記法はJSONっぽい
 
 ```
-$ ruby hash.rb 
+$ ruby hash.rb
 {"tarou"=>100, "jirou"=>200}
 {:id001=>"tarou", :id002=>"jirou"}
 {:id001=>200, :id002=>400}
@@ -178,4 +178,25 @@ $ ruby hash.rb
 [:id001, :id002]
 [200, 400]
 false
+```
+
+## オブジェクトの変換
+PHPみたいに型がガバガバではないので、型変換が必要です
+
+* to_i(integer)
+* to_f(float)
+* to_s(string)
+* to_a(array)
+* to_h(hash)
+
+array.to_hはruby2.0にはなく2.1のリファレンスにはあった
+
+```
+$ ruby convertObject.rb
+Fixnum
+mesh1neko is 100
+String
+150
+{:hoge=>100, :foo=>200}
+[[:hoge, 100], [:foo, 200]]
 ```
