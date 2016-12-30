@@ -200,3 +200,28 @@ String
 {:hoge=>100, :foo=>200}
 [[:hoge, 100], [:foo, 200]]
 ```
+
+## %記法
+楽に書ける記法
+
+""や''をで囲む必要がない模様。便利そうである。
+
+生成するものによって%のあとにつけるものが変わる
+
+なお、小文字の場合は'、大文字は"と同じ扱いになる
+
+* q/Q:文字 省略した場合はQと同義
+* w/W:配列
+
+```
+$ ruby percentNotation.rb 
+hello" ruby
+hello' ruby
+hello' ruby
+hello" ruby
+hello' ruby
+["red", "blue"]
+["red", "blue"]
+["red", "blue"]
+["red", "blue"]
+```
