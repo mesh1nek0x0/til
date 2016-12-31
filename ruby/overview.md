@@ -225,3 +225,21 @@ hello' ruby
 ["red", "blue"]
 ["red", "blue"]
 ```
+
+## 書式付き
+"文字列" % 値　※値が複数の場合は配列で渡す
+
+フォーマット指定はだいたい他の指定と似ている。
+
+* %s: 数字をつけることで幅、-をつけることで左寄せにできる 
+ * %-5sだと５文字幅の左寄せ
+
+```
+$ ruby formattedString.rb 
+"name: mesh1neko"
+"name:  mesh1neko"
+"name: mesh1neko "
+"id: 00355, rate:       3.28"
+name: mesh1neko
+"id: 00355, rate:       3.14"
+```
