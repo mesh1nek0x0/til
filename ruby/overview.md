@@ -292,3 +292,31 @@ pink
 "input signal is pink"
 wrong signal
 ```
+
+## loop
+* while <condition> do ... end
+* <num>.times do [|i|]... end
+* do ... endかわりに{}で1行で書くことが多いらしい
+ * スコープがはっきりして{}の方がしっくりくるかも
+
+```
+$ ruby loop.rb 
+2
+hoge
+hoge
+0: hello
+1: hello
+2: hello
+3: hello
+4: hello
+5: hello
+6: hello
+7: hello
+8: hello
+9: hello
+0: foo
+1: foo
+2: foo
+3: foo
+4: foo
+```
