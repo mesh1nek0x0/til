@@ -214,7 +214,7 @@ String
 * w/W:配列
 
 ```
-$ ruby percentNotation.rb 
+$ ruby percentNotation.rb
 hello" ruby
 hello' ruby
 hello' ruby
@@ -231,11 +231,11 @@ hello' ruby
 
 フォーマット指定はだいたい他の指定と似ている。
 
-* %s: 数字をつけることで幅、-をつけることで左寄せにできる 
+* %s: 数字をつけることで幅、-をつけることで左寄せにできる
  * %-5sだと５文字幅の左寄せ
 
 ```
-$ ruby formattedString.rb 
+$ ruby formattedString.rb
 "name: mesh1neko"
 "name:  mesh1neko"
 "name: mesh1neko "
@@ -259,10 +259,10 @@ end
 ```
 
 ```
-$ ruby ifcondition.rb 
+$ ruby ifcondition.rb
 56
 soso
-$ ruby ifcondition.rb 
+$ ruby ifcondition.rb
 99
 so good!
 score > 80 codition written in postposition
@@ -275,19 +275,19 @@ score > 80 codition written in postposition
 * ifと同じくendで終わり
 
 ```
-$ ruby case.rb 
+$ ruby case.rb
 red
 "input signal is red"
 stop
-$ ruby case.rb 
+$ ruby case.rb
 blue
 "input signal is blue"
 go
-$ ruby case.rb 
+$ ruby case.rb
 green
 "input signal is green"
 go
-$ ruby case.rb 
+$ ruby case.rb
 pink
 "input signal is pink"
 wrong signal
@@ -298,9 +298,14 @@ wrong signal
 * <num>.times do [|i|]... end
 * do ... endかわりに{}で1行で書くことが多いらしい
  * スコープがはっきりして{}の方がしっくりくるかも
+* for <value> in <array> do ... end
+* for <key, value> in <hash> do ... end
+* <array>.each do |color| ... end
+* <hash>.each do |key, value| ... end
+ * do ... end部分は同様に{}で書き換えられる
 
 ```
-$ ruby loop.rb 
+$ ruby loop.rb
 2
 hoge
 hoge
@@ -319,4 +324,18 @@ hoge
 2: foo
 3: foo
 4: foo
+15
+16
+17
+18
+19
+20
+"blue"
+"red"
+"green"
+1
+2
+3
+tarou: 100
+jirou: 200
 ```
