@@ -243,3 +243,27 @@ $ ruby formattedString.rb
 name: mesh1neko
 "id: 00355, rate:       3.14"
 ```
+
+## 条件分岐
+* だいたい一緒ですが、else ifではなくelsif
+* 単純な条件分岐だと後ろにも書ける...
+
+```
+if <criteria> [then]
+...
+elsif
+..
+else
+..
+end
+```
+
+```
+$ ruby ifcondition.rb 
+56
+soso
+$ ruby ifcondition.rb 
+99
+so good!
+score > 80 codition written in postposition
+```
