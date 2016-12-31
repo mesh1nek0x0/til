@@ -267,3 +267,28 @@ $ ruby ifcondition.rb
 so good!
 score > 80 codition written in postposition
 ```
+
+## case分岐
+* 書き出しはswitchではない
+* whenでつなぐ
+* defaultの代わりにelseとつなぐ
+* ifと同じくendで終わり
+
+```
+$ ruby case.rb 
+red
+"input signal is red"
+stop
+$ ruby case.rb 
+blue
+"input signal is blue"
+go
+$ ruby case.rb 
+green
+"input signal is green"
+go
+$ ruby case.rb 
+pink
+"input signal is pink"
+wrong signal
+```
