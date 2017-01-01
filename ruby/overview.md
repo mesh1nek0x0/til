@@ -303,6 +303,7 @@ wrong signal
 * <array>.each do |color| ... end
 * <hash>.each do |key, value| ... end
  * do ... end部分は同様に{}で書き換えられる
+* loop do ... end
 
 ```
 $ ruby loop.rb
@@ -339,3 +340,7 @@ hoge
 tarou: 100
 jirou: 200
 ```
+
+### breakとnext
+* break:終わり。他の言語と同じ
+* next:次の処理へ。他の言語のcontinue
