@@ -374,3 +374,17 @@ mesh1neko
 method.rb:8:in `sayHello': wrong number of arguments (0 for 1) (ArgumentError)
 	from method.rb:17:in `<main>'
 ```
+
+## class
+* calss宣言はそのまま
+* functionはdef ... endを利用
+* コンストラクタはdef initialize [name...] ... end
+* インスタンス変数は@をつけて宣言する
+* インスタンスは.newで生成できる
+
+```
+$ ruby class.rb 
+"hi! tom"
+"hi! mesh1neko"
+"hi! nanashi"
+```
