@@ -354,3 +354,23 @@ $ ruby breakNext.rb
 6
 3
 ```
+
+## メソッド
+def <function name> [(args)] ... end
+
+* 最後に評価された値を返す
+ * returnを省略できる　※明示もできる
+* 引数を設定し、デフォルト値も設定できる
+ * 設定がない際に省略するとエラーになります
+* 呼び出す際に、()を省略できる場合もある
+
+```
+$ ruby method.rb 
+mesh1neko
+"hi! ruby"
+"hi! mesh1neko"
+"hi! mesh1neko"
+"hello! mesh1neko"
+method.rb:8:in `sayHello': wrong number of arguments (0 for 1) (ArgumentError)
+	from method.rb:17:in `<main>'
+```
