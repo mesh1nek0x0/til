@@ -413,3 +413,18 @@ Tom
 "hi! Tom"
 class.rb:34:in `<main>': undefined method `id=' for #<User:0x007fd01a87dad8 @name="Tom", @id=1483251415> (NoMethodError)
 ```
+
+## クラスメソッド/変数/定数
+各インスタンスで共有される値
+* クラスメソッドはdef self.<method> ... endで定義する
+* クラス変数は@@<variable>で定義する
+* クラス定数は[^A-Z]{1}.*で定義する。慣例で全部大文字が多い
+
+```
+$ ruby class-method-variables.rb 
+1.1
+hi yuma
+hi chika
+hi osamu
+there are 3's instances. @ version 1.1
+```
