@@ -344,3 +344,13 @@ jirou: 200
 ### breakとnext
 * break:終わり。他の言語と同じ
 * next:次の処理へ。他の言語のcontinue
+```
+$ ruby breakNext.rb 
+0
+1
+2
+4
+5
+6
+3
+```
