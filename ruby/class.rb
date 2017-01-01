@@ -1,9 +1,17 @@
 #!/bin/ruby
 
 class User
+  attr_accessor :name
+  attr_reader :id
+
   @name
+  @id
+
   def initialize(name = 'nanashi')
-    @name = name
+    self.name = name
+    sleep 1
+    @id = Time.now.to_i
+    puts %(#{self.name}'s id : #{self.id})
   end
 
   def sayHi
@@ -18,3 +26,9 @@ nanashi = User.new
 tom.sayHi
 mesh1neko.sayHi
 nanashi.sayHi
+
+
+puts tom.id
+puts tom.name = "Tom"
+tom.sayHi
+tom.id = 123 # Error

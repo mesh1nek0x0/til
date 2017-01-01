@@ -345,7 +345,7 @@ jirou: 200
 * break:終わり。他の言語と同じ
 * next:次の処理へ。他の言語のcontinue
 ```
-$ ruby breakNext.rb 
+$ ruby breakNext.rb
 0
 1
 2
@@ -363,9 +363,9 @@ def <function name> [(args)] ... end
 * 引数を設定し、デフォルト値も設定できる
  * 設定がない際に省略するとエラーになります
 * 呼び出す際に、()を省略できる場合もある
-
+* 呼び出し元のオブジェクトをレシーバーというらしい
 ```
-$ ruby method.rb 
+$ ruby method.rb
 mesh1neko
 "hi! ruby"
 "hi! mesh1neko"
@@ -383,8 +383,33 @@ method.rb:8:in `sayHello': wrong number of arguments (0 for 1) (ArgumentError)
 * インスタンスは.newで生成できる
 
 ```
-$ ruby class.rb 
+$ ruby class.rb
 "hi! tom"
 "hi! mesh1neko"
 "hi! nanashi"
+```
+
+### accessor
+どうもprivateとかpublicのアクセス修飾子はないのかな？
+
+　→　これはちゃんとあるらしい。ただしちらっと見た感じ他の言語とは少しことなりそう...
+
+* attr_accessor :symbol
+ * これでgetter/setterの宣言ができる
+* attr_reader :symbol
+ * これはgetter only
+* インスタンス内の変数やメソッドにはselfでもアクセスできる
+
+```
+$ ruby class.rb
+tom's id : 1483251415
+mesh1neko's id : 1483251416
+nanashi's id : 1483251417
+"hi! tom"
+"hi! mesh1neko"
+"hi! nanashi"
+1483251415
+Tom
+"hi! Tom"
+class.rb:34:in `<main>': undefined method `id=' for #<User:0x007fd01a87dad8 @name="Tom", @id=1483251415> (NoMethodError)
 ```
