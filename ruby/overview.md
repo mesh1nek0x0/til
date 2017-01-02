@@ -428,3 +428,14 @@ hi chika
 hi osamu
 there are 3's instances. @ version 1.1
 ```
+
+## 継承
+* <Sub class> < <Super Class>で宣言できます
+* オーバライドや親のメソッドが使えるのは他の言語と同じそう
+* 親クラスでattr_readerとしている値を子クラスでattr_accessorとして変更できる
+```
+$ ruby class-extend.rb 
+tarou's id:1483357537
+superTarou's id:1483357537
+superTarou's id:1483357538
+```
