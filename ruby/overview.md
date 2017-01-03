@@ -439,3 +439,20 @@ tarou's id:1483357537
 superTarou's id:1483357537
 superTarou's id:1483357538
 ```
+
+## クラスメソッドのアクセス修飾子
+* 修飾子の種類は３種類
+ * public(default)
+ * protected
+ * private
+* privateでも継承したクラスからは呼び出せる...あれprotectedの存在意義...?
+* privateでもオーバライドできます。他の言語はそもそも継承されないのでオーバライドという概念がないかな
+* レシーバーの指定ができない、という定義のためself.というアクセスの仕方ができない
+
+```
+$ ruby accessModifires.rb 
+hi! nanashi! I'm from public!
+hi! nanashi! I'm from private!
+hi! nanashi! I'm from public!
+Hi! nanashi!!!!! I'm from Admin private
+```
