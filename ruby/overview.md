@@ -458,3 +458,18 @@ hi! nanashi! I'm from private!
 hi! nanashi! I'm from public!
 Hi! nanashi!!!!! I'm from Admin private
 ```
+
+## module
+メソッドの名前をぶつからないように名前空有間を区切れる仕組み
+
+* module <ModuleName>で宣言する
+ * ModuleNameの最初は大文字で
+* メソッドはself.で定義するあたり、単純なClassメソッド集っぽくもみえるが...
+ * 調べてみたところインスタンス化できないがクラスに取り込むことはできるらしい（mixin?）
+
+```
+$ ruby module.rb 
+exporting...
+importing...
+1.0
+```
