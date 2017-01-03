@@ -381,6 +381,8 @@ method.rb:8:in `sayHello': wrong number of arguments (0 for 1) (ArgumentError)
 * コンストラクタはdef initialize [name...] ... end
 * インスタンス変数は@をつけて宣言する
 * インスタンスは.newで生成できる
+* クラス名の命名規則はcamelCase推奨
+* クラス内のメソッドの命名規則に関してはsnake_case推奨
 
 ```
 $ ruby class.rb
