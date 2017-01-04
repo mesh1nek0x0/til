@@ -473,3 +473,15 @@ exporting...
 importing...
 1.0
 ```
+
+### mixin
+* 他のクラスにincludeしてメソッドを定義できる
+ * 継承関係にはないが使いたい...といった場合
+* moduleでメソッドを宣言する時にselfをつけずに宣言することで組み込み可能
+* 組み込むclass側はclass定義内でmoduleをincludeすることで利用できる
+
+```
+$ ruby mixin.rb 
+Player debug info...
+Enemy debug info...
+```
