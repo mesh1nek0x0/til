@@ -485,3 +485,8 @@ $ ruby mixin.rb
 Player debug info...
 Enemy debug info...
 ```
+
+## exception
+* begin ... rescue => <exception> ... [ensure] ... end
+ * ensureは書いても書かなくてもおk、使い方はfinalyに似ている
+* raise <Exception>で例外を発生させられます
