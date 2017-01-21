@@ -107,3 +107,22 @@ hogehoge # でてますね！
 msg is msg # こっちもでてますね！
 
 ```
+
+## スクリプトで環境変数の設定
+普通にやっても、実行プロセスで環境が閉じているため、反映されません
+```
+$ export -p | grep -c TEST_ENV_VARIABLE
+0
+$ ./script.sh
+$ export -p | grep -c TEST_ENV_VARIABLE
+0
+```
+
+実行結果をsourceコマンド読み込みます
+```
+$ export -p | grep -c TEST_ENV_VARIABLE
+0
+$ source ./script.sh
+$ export -p | grep -c TEST_ENV_VARIABLE
+1
+```
