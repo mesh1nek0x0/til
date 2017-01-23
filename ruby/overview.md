@@ -168,11 +168,12 @@ $ ruby array.ruby
  * key名の前に:をつける書き方はシンボルと呼ぶようです
  * シンボル記法はよく使うみたいです
  * シンボルを使って書く場合の短縮記法はJSONっぽい
+ * シンボルを使った場合=>を省略できる記法がある
 
 ```
-$ ruby hash.rb
+$ ruby hash.rb 
 {"tarou"=>100, "jirou"=>200}
-{:id001=>"tarou", :id002=>"jirou"}
+{:id001=>"tarou", :id002=>"jirou", :id003=>"saburo", :id004=>"shiro"}
 {:id001=>200, :id002=>400}
 2
 [:id001, :id002]
