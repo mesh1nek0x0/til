@@ -300,6 +300,7 @@ wrong signal
 * do ... endかわりに{}で1行で書くことが多いらしい
  * スコープがはっきりして{}の方がしっくりくるかも
 * for <value> in <array> do ... end
+ *  <array>の部分は 1..10(以下)や1...10(未満)という指定（範囲オブジェクト）もある
 * for <key, value> in <hash> do ... end
 * <array>.each do |color| ... end
 * <hash>.each do |key, value| ... end
