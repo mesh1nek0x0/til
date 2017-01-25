@@ -2,7 +2,7 @@
 
 scores = {'tarou' => 100, 'jirou' => 200}
 p scores
-members = {:id001 => 'tarou', :id002 => 'jirou'}
+members = {:id001 => 'tarou', :id002 => 'jirou', id003: 'saburo', id004: 'shiro'}
 p members
 products = {id001: 200, id002: 400}
 p products
