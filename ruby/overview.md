@@ -211,16 +211,19 @@ String
 
 なお、小文字の場合は'、大文字は"と同じ扱いになる
 
+また変数展開する際は%("#{hoge}")といった形式になる
+
 * q/Q:文字 省略した場合はQと同義
 * w/W:配列
 
 ```
-$ ruby percentNotation.rb
+$ ruby percentNotation.rb 
 hello" ruby
 hello' ruby
 hello' ruby
 hello" ruby
 hello' ruby
+hoge is "foo"
 ["red", "blue"]
 ["red", "blue"]
 ["red", "blue"]
