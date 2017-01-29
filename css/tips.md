@@ -8,3 +8,11 @@
   border-collapse: collapse;
 }
 ```
+
+## 要素の複数指定
+カンマ区切りで複数指定できます
+```
+td. tr {
+  font-size: 1px;
+}
+```
