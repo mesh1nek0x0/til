@@ -18,6 +18,21 @@
 * erbはembedded rubyの略
  * rubyは<% %>で操作可能
  * 出力するときは<%=variables%>
+ * @指定をつけて変数を宣言することでView(erb)ファイルから参照可能
+* 名前付きrouteというものが存在し、rake toutesで表示できる<prefix>_pathで当該URLのエイリアスとなるようです
+ * rootのpathは設定が特殊
+* layoutの指定があればcontentsを書くだけで済みます。
+ * <%= yield %>の部分にコンテンツが出力されます
+ * stylesheet_link_tagやjavascript_include_tagでassetsの読み込みできるそうな
+```
+Rails.application.routes.draw do
+  # 「get '/top'」の部分を「root」を用いて書き換えてください
+  root 'home#top' # root pathの指定
+  
+  get '/about' => 'home#about' # それ以外の指定
+  
+end
+```
 
 ### 補助コマンド:rake routes
 routingを確認できるコマンド
