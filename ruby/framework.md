@@ -24,6 +24,7 @@
 * layoutの指定があればcontentsを書くだけで済みます。
  * <%= yield %>の部分にコンテンツが出力されます
  * stylesheet_link_tagやjavascript_include_tagでassetsの読み込みできるそうな
+ * <%= form_tag do%><%end%>という楽な書き方でformがかける
 ```
 Rails.application.routes.draw do
   # 「get '/top'」の部分を「root」を用いて書き換えてください
