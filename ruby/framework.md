@@ -27,11 +27,10 @@
  * <%= form_tag do%><%end%>という楽な書き方でformがかける
 ```
 Rails.application.routes.draw do
-  # 「get '/top'」の部分を「root」を用いて書き換えてください
   root 'home#top' # root pathの指定
   
   get '/about' => 'home#about' # それ以外の指定
-  
+  post '/notes' => 'notes#create' # notesへpostされたらnotesControllerのcreateメソッドにルーティング
 end
 ```
 
