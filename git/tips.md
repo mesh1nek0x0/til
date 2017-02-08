@@ -77,3 +77,60 @@ export PATH=/usr/local/bin:$PATH
 $ git --version
 git version 2.6.0 # これでめでたくmacのgitからおさらばできた！
 ```
+
+## 過去にcommit済みファイルのローカル変更を破棄する
+```
+$ git checkout [--] <file>
+```
+
+実はgit statusコマンドで優しく教えてくれていた
+
+```
+$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   tips.md
+```
+
+はて？--は省略できるようだけど、これは一体何のパラメータなのか...
+
+helpを読むと...
+
+```
+       git checkout [-p|--patch] [<tree-ish>] [--] <pathspec>...
+           When <paths> or --patch are given, git checkout does not switch
+           branches. It updates the named paths in the working tree from the
+           index file or from a named <tree-ish> (most often a commit). In
+           this case, the -b and --track options are meaningless and giving
+           either of them results in an error. The <tree-ish> argument can be
+           used to specify a specific tree-ish (i.e. commit, tag or tree) to
+           update the index for the given paths before updating the working
+           tree.
+``
+
+pathや--patchが指定された場合、ブランチはswitchしないよ。（そういえばcheckoutは元々そういうコマンドですね。
+
+指定のコミットで該当ファイルだけ更新するから-bや--trackのオプションは意味なくなるわ...みたいなことを書いている。
+
+```
+### 試してみると確かにできない（同時にできんわエラー）
+$ git checkout 48ed1d3d3947fbc7c40e31e41e49803911a0a379 tips.md -b test-branch
+fatal: Cannot update paths and switch to branch 'test-branch' at the same time.
+Did you intend to checkout 'git/tips.md' which can not be resolved as commit?
+```
+
+--の謎は解けない
+
+仕方ないのでソースをみたところ、どうやらこれは区切り文字？のような扱いをしているようです。
+
+--の位置やパラメータによって挙動を変えている感じのように見えますが、
+
+基本的には--以降はpathを表すものだーと書いているようです。
+
+cf. https://github.com/git/git/blob/6610af872f6494a061780ec738c8713a034b848b/builtin/checkout.c#L900-L964
+
+-- 以降はpathだよ！という明示で納得、すっきり。

@@ -23,3 +23,10 @@ $ apm install file-icons
 cf. https://atom.io/packages/file-icons
 
 Dockerfileとかもちゃんとくじらアイコンになる嬉しい
+
+
+## スペースを可視化したい
+Atom -> Preference -> show invisibles
+
+## 全角スペースも可視化したい
+つshow-ideographic-space
