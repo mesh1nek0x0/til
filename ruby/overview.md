@@ -421,8 +421,9 @@ Tom
 class.rb:34:in `<main>': undefined method `id=' for #<User:0x007fd01a87dad8 @name="Tom", @id=1483251415> (NoMethodError)
 ```
 
-## クラスメソッド/変数/定数
-各インスタンスで共有される値
+## クラス内のメソッド/変数/定数
+* インスタンス変数は各インスタンスで共有される値
+ * インスタンス変数にアクセスする際、accessorを定義するかdef value=(arg) ... endで定義
 * クラスメソッドはdef self.<method> ... endで定義する
 * クラス変数は@@<variable>で定義する
 * クラス定数は[^A-Z]{1}.*で定義する。慣例で全部大文字が多い
