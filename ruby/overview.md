@@ -406,6 +406,7 @@ $ ruby class.rb
 * attr_reader :symbol
  * これはgetter only
 * インスタンス内の変数やメソッドにはselfでもアクセスできる
+ * 省略もできる（ただし、わかりづらいしつけたい派）
 
 ```
 $ ruby class.rb
@@ -422,7 +423,7 @@ class.rb:34:in `<main>': undefined method `id=' for #<User:0x007fd01a87dad8 @nam
 ```
 
 ## クラス内のメソッド/変数/定数
-* インスタンス変数は各インスタンスで共有される値
+* クラス変数は各インスタンスで共有される値
  * インスタンス変数にアクセスする際、accessorを定義するかdef value=(arg) ... endで定義
 * クラスメソッドはdef self.<method> ... endで定義する
 * クラス変数は@@<variable>で定義する
@@ -454,6 +455,7 @@ superTarou's id:1483357538
  * protected
  * private
 * privateでも継承したクラスからは呼び出せる...あれprotectedの存在意義...?
+* private宣言以降はすべてprivate扱いになる
 * privateでもオーバライドできます。他の言語はそもそも継承されないのでオーバライドという概念がないかな
 * レシーバーの指定ができない、という定義のためself.というアクセスの仕方ができない
 
