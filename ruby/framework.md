@@ -25,6 +25,7 @@
  * <%= yield %>の部分にコンテンツが出力されます
  * stylesheet_link_tagやjavascript_include_tagでassetsの読み込みできるそうな
  * <%= form_tag do%><%end%>という楽な書き方でformがかける
+ 
 ```
 Rails.application.routes.draw do
   root 'home#top' # root pathの指定
@@ -43,3 +44,17 @@ tion
    top GET  /top(.:format)   home#top
  about GET  /about(.:format) home#about
 ```
+
+### modelとdbまわり
+コマンドでORMapper？みたいなものが作れる模様
+
+```
+$ rails generate model <Model> [column1:type] [column2:type]...
+$ rake db:migrate
+```
+
+* 仕組みはわからんが、生成されたModelクラスはカラムのgetter/setterが使える
+* 命名規則があってModelは頭文字が大文字で単数、テーブル名は複数形。
+ * すごいのはPersonとpeopleの対比、やるじゃん
+ 
+ 
