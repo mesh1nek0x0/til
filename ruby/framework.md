@@ -19,7 +19,7 @@
  * rubyは<% %>で操作可能
  * 出力するときは<%=variables%>
  * @指定をつけて変数を宣言することでView(erb)ファイルから参照可能
-* 名前付きrouteというものが存在し、rake toutesで表示できる<prefix>_pathで当該URLのエイリアスとなるようです
+* 名前付きrouteというものが存在し、rake routesで表示できる<prefix>_pathで当該URLのエイリアスとなるようです
  * rootのpathは設定が特殊
 
  ```
@@ -69,4 +69,3 @@ $ rake db:migrate
  * すごいのはPersonとpeopleの対比、やるじゃん
 * モデルはコントローラから宣言なく使える？なんで？
 * rails consoleなる機能でDBの中を確認できる、つよい
- 
