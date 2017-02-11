@@ -69,3 +69,8 @@ $ rake db:migrate
  * すごいのはPersonとpeopleの対比、やるじゃん
 * モデルはコントローラから宣言なく使える？なんで？
 * rails consoleなる機能でDBの中を確認できる、つよい
+* CRUDの概念とViewにガイドラインがあるようだ
+ * CREATE: new画面とcreateアクション
+ * READ  : index画面とshowアクション
+ * UPDATE: edit画面とupdateアクション
+ * DELETE: destroyアクション　※画面はeditを使う
