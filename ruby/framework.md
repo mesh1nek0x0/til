@@ -56,5 +56,6 @@ $ rake db:migrate
 * 仕組みはわからんが、生成されたModelクラスはカラムのgetter/setterが使える
 * 命名規則があってModelは頭文字が大文字で単数、テーブル名は複数形。
  * すごいのはPersonとpeopleの対比、やるじゃん
- 
+* モデルはコントローラから宣言なく使える？なんで？
+* rails consoleなる機能でDBの中を確認できる、つよい
  
