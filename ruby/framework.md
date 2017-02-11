@@ -21,18 +21,29 @@
  * @指定をつけて変数を宣言することでView(erb)ファイルから参照可能
 * 名前付きrouteというものが存在し、rake toutesで表示できる<prefix>_pathで当該URLのエイリアスとなるようです
  * rootのpathは設定が特殊
+
+ ```
+ Rails.application.routes.draw do
+   root 'home#top' # root pathの指定
+   
+   get '/about' => 'home#about' # それ以外の指定
+   post '/notes' => 'notes#create' # notesへpostされたらnotesControllerのcreateメソッドにルーティング
+ end
+ ```
+
 * layoutの指定があればcontentsを書くだけで済みます。
  * <%= yield %>の部分にコンテンツが出力されます
  * stylesheet_link_tagやjavascript_include_tagでassetsの読み込みできるそうな
  * <%= form_tag do%><%end%>という楽な書き方でformがかける
- 
+ * これらのヘルパーはhtmlの属性をいい感じにかける
+
 ```
-Rails.application.routes.draw do
-  root 'home#top' # root pathの指定
-  
-  get '/about' => 'home#about' # それ以外の指定
-  post '/notes' => 'notes#create' # notesへpostされたらnotesControllerのcreateメソッドにルーティング
-end
+<%= form_tag do %>
+  <%= text_filed_tag(:title, @note.title) %>
+  <!-- ()を省略して以下のようにもかける -->
+  <%= text_area_tag :content, @note.content %>
+  <%= submit_tag 'save' %>
+<%= end %>
 ```
 
 ### 補助コマンド:rake routes
