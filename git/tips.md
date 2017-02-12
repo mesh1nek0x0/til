@@ -134,3 +134,21 @@ Did you intend to checkout 'git/tips.md' which can not be resolved as commit?
 cf. https://github.com/git/git/blob/6610af872f6494a061780ec738c8713a034b848b/builtin/checkout.c#L900-L964
 
 -- 以降はpathだよ！という明示で納得、すっきり。
+
+## 間違ってgit reset --hardしたのをなかったことにする
+git reflogに履歴が残っているので、もう１回reset --hardでできるんです！！！
+
+※事後のため結果は残っておらず...
+
+```
+$ git reflog -n 5
+f3995a0 HEAD@{0}: reset: moving to HEAD@{1}
+901d82e HEAD@{1}: reset: moving to 901d82ec2d5f4df80266afa1e1ae7f12882afba4 [83c23eac63338a0571e3554dd61ed045b0934b9d]
+f3995a0 HEAD@{2}: commit: study javascript/hash tips
+e111815 HEAD@{3}: commit: study js/array-max|min
+cf7bbdf HEAD@{4}: commit: study js/string concat syntax sugar
+
+### HEAD{1}が戻したいところならこんな感じ or 左端のcommit hash
+$ git reset --hard HEAD@{1}
+```
+
