@@ -10,8 +10,10 @@
  * 雛形をバンとつくるやつね
 * rails server
  * サーバ起動ですね
+ * rails sでも起動できる
 * rails generate controller <controller-name> <action-name>
  * controllerとviewファイルおよびassets(scssなど)も生成
+ * generateは略してgだけでもok
  
 ### 基礎知識
 * routingはconfig/routes.rbで上書きできる
@@ -74,3 +76,24 @@ $ rake db:migrate
  * READ  : index画面とshowアクション
  * UPDATE: edit画面とupdateアクション
  * DELETE: destroyアクション　※画面はeditを使う
+ 
+ ### 応用知識
+ scaffoldというコマンドを使うとCRUDまわりをいい感じに作ってくれるもよう
+ 
+ ```
+ $ rails g scaffold Note title:string content:text
+ ```
+ 
+* ルーティングやviewもいい感じに用意してくれる
+* いわゆる前処理もbefore_action :method, only: [:actionA, :actionB, ... ]としてできる
+ * onlyはbefore_actionを指定のものだけに限定する
+* ストロングパラメータというもので受け取る値を制限できる
+ * params.require(:key).permit(:key1, :key2, ...)
+* バリデーションはmodelで設定できるもよう
+ * validates :key, <valid-type>: <valid-value>
+ * e.g. 空文字制御は validates :key, presence: true
+* renderメソッドはredirectと違ってactionを介さずviewの表示のみ
+* redirect_toには第二引数でnoticeという値に一度きりのメッセージをセットできる
+* パーシャルという概念でviewの要素はパーツ化できる
+ * _（アンダースコアで始める模様）
+ * <% render path_to_partial %>で描画できる
