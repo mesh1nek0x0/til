@@ -76,6 +76,12 @@ $ rake db:migrate
  * READ  : index画面とshowアクション
  * UPDATE: edit画面とupdateアクション
  * DELETE: destroyアクション　※画面はeditを使う
+* rails g migration <migration-file-name> <column:type>....でmigration用のファイルを生成できる
+ * rake db:migrateで反映する
+* dbにはmodel経由でアクセスする
+ * <Model>.find(arg)
+ * <Modle>.where(hash-key: arg)
+* belongs_toやhas_manyをmodelに設定することで多重度を設定可能
  
  ### 応用知識
  scaffoldというコマンドを使うとCRUDまわりをいい感じに作ってくれるもよう
@@ -92,6 +98,7 @@ $ rake db:migrate
 * バリデーションはmodelで設定できるもよう
  * validates :key, <valid-type>: <valid-value>
  * e.g. 空文字制御は validates :key, presence: true
+ * uniqueness：trueでユニーク制約をかけられる
 * renderメソッドはredirectと違ってactionを介さずviewの表示のみ
 * redirect_toには第二引数でnoticeという値に一度きりのメッセージをセットできる
 * パーシャルという概念でviewの要素はパーツ化できる
