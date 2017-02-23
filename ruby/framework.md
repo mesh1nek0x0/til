@@ -104,3 +104,13 @@ $ rake db:migrate
 * パーシャルという概念でviewの要素はパーツ化できる
  * _（アンダースコアで始める模様）
  * <% render path_to_partial %>で描画できる
+ 
+ ### devise gem
+ これをいれることで登録・ログインにまつわる基幹機能が利用できるようになる
+ 
+* current_userというヘルパーはログイン中ユーザの情報にアクセスできる
+* user_sign_in?でログイン中か判定できる
+* before_actionで!authenticate_userを指定することでログイン中以外にActionが実行されない
+* パスワードは暗号化して保存されている
+  * rails consoleで <Model>.lastで最後に登録したカラムを確認できる
+* カラムは新規viewをdevise:viewを使ってgenerateすることでカスタマイズできるもよう
