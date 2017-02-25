@@ -1,5 +1,6 @@
 FROM centos:latest
 
+# root user cannot start memcached
 RUN groupadd -r memcache && useradd -r -g memcache memcache
 
 RUN yum update -y
