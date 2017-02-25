@@ -47,3 +47,6 @@ Reduce:各keyの値を加算するイメージ
 ```
 
 （このあたりはcouchbaseのMapReduceでもやりましたね）
+
+## 全体像
+どうもhadoopにHDFSにデータを突っ込む処理があって、mapreduceはHDFS上のディレクトリを指定して処理が進められるようだ。
