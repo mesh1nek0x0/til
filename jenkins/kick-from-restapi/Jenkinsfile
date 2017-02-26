@@ -1,0 +1,14 @@
+node {
+    stage('user check') {
+        // ===は使えない
+        if (params.user == 'unknown') {
+            echo '[FAILURE] unknown user was specified'
+            // resultをセットしてreturnすることでbuildが終わる
+            currentBuild.result = 'FAILURE'
+            return
+        }
+    }
+    stage('build') {
+        echo params.user
+    }
+}
