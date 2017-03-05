@@ -30,6 +30,9 @@ version1はcompose1.6.xまでのサポートでそれ以降は廃止予定のた
  * 依存するコンテナの記述をします
 * image
  * 使用するイメージを書きます
+* env_file
+ * そのままでも配列でもかける
+ * e.g .env
  
 ## docker-composeコマンド
 ### up
