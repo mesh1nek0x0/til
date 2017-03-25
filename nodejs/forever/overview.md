@@ -3,7 +3,7 @@ scriptをお手軽に不死身なデーモン化できる、まさにforever
 
 ## quickstart
 ### install
-今回はDocker上なのでdocker fileにて。
+今回はDocker上なのでdockerコンテナにて。
 ```
 $ npm install -g forever
 ```
